@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="theme-color" content="#d34500">
+	<title>project name</title>
+	<link rel="shortcut icon" type="image/png" href="/pics/icons/16-x-16.png"/>
+	<link rel="stylesheet" type="text/css" href="/mdl/material.min.css">
+	<script src="/mdl/material.min.js" async></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
+	<link rel="stylesheet" type="text/css" href="/css/flickity.css">
+	<script type="text/javascript" src="/js/flickity.pkgd.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="manifest" href="/manifest.json">
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+	<script src="/js/jquery-3.2.1.min.js"></script>
+	
+	
+</head>
+<body id="override">
+	<!-- Fixed header -->
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<header class="mdl-layout__header">
+			<div class="mdl-layout__header-row">
+				<!-- Title -->
+				<span class="mdl-layout-title">PUMPKIN</span>
+				<!-- Add spacer, to align navigation to the right -->
+				<div class="mdl-layout-spacer"></div>
+
+				<div class="icon-login" id="ac-p">
+					<i class="material-icons" id="ac">account_circle</i>
+				</div>
+				<img id="gImg">
+				<!-- MDL Spinner Component with Single Color -->
+				<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+				<nav class="mdl-navigation side_nav">
+					<a class="mdl-navigation__link login">LOG IN</a>
+					<a class="mdl-navigation__link createaccount">CREATE ACCOUNT</a>
+				</nav>
+				<div class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+				for="gImg">
+					<div class="menuDetails">
+						<img id="gImg1">
+						<div class="gName-p">
+							<p>Logged in as </p>
+							<span class="gName" id="gName">vishnuraghavan</span>
+						</div>
+					</div>
+					<div class="mdl-menu__item" class="signOut" id="signOut">LogOut</div>
+				</div>
+			</div>
+		</header>
+		<div class="mdl-layout__drawer">
+			<span class="mdl-layout-title" id="nav_greet">Settings</span>
+			<nav class="mdl-navigation">
+				<a class="mdl-navigation__link" href="">Home</a>
+				<a class="mdl-navigation__link" href="">Link</a>
+				<a class="mdl-navigation__link" href="">Contact Us</a>
+				<a class="mdl-navigation__link" href="">About Us</a>
+			</nav>
+		</div>
+		<main class="mdl-layout__content">
+			<section>
+				<img class="logo" src="../pics/1440/logo-1440.png">
+			</section>
+			<div class="sub-h">
+				<h4>Collections</h4>
+				<h6>Explore restaurants based on collections...</h6>
+			</div>
+			<div class="page-content mdl-grid" id="slide-container">
+				<div class="mdl-cell mdl-cell--3-col collection">
+					<div class="mdl-card mdl-shadow--2dp demo-card">
+						<div class="mdl-card__title title">
+							<h4 class="mdl-card__title--text">Trending Now</h4>
+						</div>
+						<div class="image mdl-card__media"></div>
+						<div class="mdl-card__supporting-text">The most popular restaurants in town</div>
+					</div>
+				</div>
+				<div class="mdl-cell mdl-cell--3-col collection">
+					<div class="mdl-card mdl-shadow--2dp demo-card">
+						<div class="mdl-card__title title">
+							<h4 class="mdl-card__title--text">Newly Opened</h4>
+						</div>
+						<div class="image1 mdl-card__media"></div>
+						<div class="mdl-card__supporting-text">Newly opened restaurants in town</div>
+					</div>	
+				</div>
+				<div class="mdl-cell mdl-cell--3-col collection">
+					<div class="mdl-card mdl-shadow--2dp demo-card">
+						<div class="mdl-card__title title">
+							<h4 class="mdl-card__title--text">Most Visited</h4>
+						</div>
+						<div class="image2 mdl-card__media"></div>
+						<div class="mdl-card__supporting-text">Most visited restaurants in town</div>
+					</div>
+				</div>
+				<div class="mdl-cell mdl-cell--3-col collection">
+					<div class="mdl-card mdl-shadow--2dp demo-card">
+						<div class="mdl-card__title title">
+							<h4 class="mdl-card__title--text">High Rated</h4>
+						</div>
+						<div class="image3 mdl-card__media"></div>
+						<div class="mdl-card__supporting-text">High rated restaurants in town</div>
+					</div>
+				</div>
+			</div>
+			<div class="sub-h">
+				<h4>Quick Search</h4>
+				<h6>Find restaurants faster by type of meal..</h6>
+			</div>
+			
+			<div class="quick">
+				<div id="quicksearch">
+					<a href="#">
+						<img src="../pics/icons/breakfast.png">
+						<h5 class="link-h">Breakfast</h5>
+					</a>
+					<a href="#">
+						<img src="../pics/icons/lunch.png">
+						<h5 class="link-h">Lunch</h5>	
+					</a>
+					<a href="#">
+						<img src="../pics/icons/dinner.png">
+						<h5 class="link-h">Dinner</h5>	
+					</a>
+					<a href="#">
+						<img src="../pics/icons/cafe.png">
+						<h5 class="link-h">Cafe</h5>	
+					</a>
+					<a href="#">
+						<img src="../pics/icons/deserts.png">
+						<h5 class="link-h">Desserts</h5>	
+					</a>
+					<a href="#">
+						<img src="../pics/icons/wine.png">
+						<h5 class="link-h">Wines &amp; beverages</h5>
+					</a>
+				</div>
+			</div>
+			<div class="sub-h">
+				<h4>Popular restaurants in Calicut</h4>
+				<h6>Explore restaurants,bars &amp; cafés in your locality.</h6>
+			</div>
+			<div class="locality">
+				<div id="local">
+				</div>
+			</div>
+			<footer class="mdl-mega-footer">
+				<div class="mdl-mega-footer__top-section">
+					<p>logos here</p>
+				</div>
+				<div class="mdl-mega-footer__middle-section">
+					<div class="mdl-mega-footer__drop-down-section">
+						<h1 class="mdl-mega-footer__heading">About Appname</h1>
+						<ul class="mdl-mega-footer__link-list">
+							<li><a href="">About</a></li>
+							<li><a href="">Contact Us</a></li>
+							<li><a href="">Culture</a></li>
+							<li><a href="">Blog</a></li>
+						</ul>
+					</div>
+					<div class="mdl-mega-footer__drop-down-section">
+						<h1 class="mdl-mega-footer__heading">FAQ</h1>
+						<ul class="mdl-mega-footer__link-list">
+							<li><a href="">Questions</a></li>
+							<li><a href="">Answers</a></li>
+							<li><a href="">Advertise</a></li>
+							<li><a href="">Careers</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="mdl-mega-footer__bottom-section">
+					<div class="mdl-mega-footer__left-section">
+						<a href="">Terms</a>
+						<a href="">Privacy</a>	
+					</div>
+					<div class="mdl-mega-footer__right-section">
+						<button class="mdl-mega-footer__social-btn">
+							<img src="../pics/icons/fb.png">
+						</button>
+						<button class="mdl-mega-footer__social-btn">
+							<img src="../pics/icons/instagram.png">
+						</button>
+						<button class="mdl-mega-footer__social-btn">
+							<img src="../pics/icons/twitter.png">
+						</button>
+					</div>
+				</div>
+			</footer>
+		</main>
+		
+	</div>
+
+	<div class="overlay_form" id="ov_form">
+		<!-- social login -->
+		<form class="modal_form">
+			<div class="heading">
+				<h2>Sign Up or login to PUMPKIN</h2>
+				<span class="close">&times;</span>
+			</div>
+			<hr>
+			<div class="social-container">
+				<a class="fb" id="fb-id">
+					<img src="../pics/icons/fb-login.png">
+					<h4>Continue using Facebook</h4>
+				</a>
+				<a class="Gl" id="Gl-id">
+					<img src="../pics/icons/google-login.png">
+					<h4>Continue using Google</h4>
+				</a>
+			</div>
+			<div class="separator"> OR </div>
+			<h3>Use Email Address</h3>
+			<div class="login-container">
+				<button id="login">LOGIN</button>
+				<button id="signup">SIGNUP</button>
+			</div>
+			<div class="tos-disclaimer">
+				By logging in, you agree to Pumpkin's 
+				<a href="appname.com/conditions">Terms of Service</a>, 
+				<a href="appname.com/cookiepolicy">Cookie Policy</a>, 
+				<a href="appname.com/privacy">Privacy Policy</a> and 
+				<a href="appname.com/policies">Content Policies</a>.        
+			</div>
+		</form>
+		<!-- social login ends here -->
+
+		<!-- login using button -->
+		<form class="modal_form_login">
+			<div class="heading">
+				<h2>Login</h2>
+				<span class="close">&times;</span>
+			</div>
+			<hr>
+			<div id="cube-text">
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label input-mail">
+					<input class="mdl-textfield__input" type="email" name="inp1" id="mail">
+					<label class="mdl-textfield__label" for="mail">Email</label>
+					<div class="mdl-textfield__error">Please enter valid Email</div>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label input-pass">	
+					<input class="mdl-textfield__input" type="password" name="inp2" id="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+					<label class="mdl-textfield__label" for="pass">Password</label>
+					<div class="mdl-textfield__error">use Uppercase,lowercase,numbers with at least 8 characters</div>
+				</div>
+			</div>
+			<div class="login-container">
+				<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored back">
+					<i class="material-icons">arrow_back</i>
+				</button>
+				<button  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored login" id="loginbtn" type="button">LOGIN</button>
+			</div>
+			<div class="signup-text">
+				Don't have an account yet! 
+				<a>SignUp</a>  here.
+			</div>
+			<div class="tos-disclaimer">
+				By logging in, you agree to Pumpkin's 
+				<a href="appname.com/conditions">Terms of Service</a>, 
+				<a href="appname.com/cookiepolicy">Cookie Policy</a>, 
+				<a href="appname.com/privacy">Privacy Policy</a> and 
+				<a href="appname.com/policies">Content Policies</a>.        
+			</div>
+		</form>
+		<!-- login ends -->
+
+		<!-- Register using button -->
+		<form class="modal_form_register">
+			<div class="heading">
+				<h2>Register</h2>
+				<span class="close">&times;</span>
+			</div>
+			<hr>
+			<div id="cube-text">
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label input-mail">
+					<input class="mdl-textfield__input" type="email" name="inp1" id="reg-mail">
+					<label class="mdl-textfield__label" for="reg-mail">Email</label>
+					<div class="mdl-textfield__error">Please enter valid Email</div>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label input-pass">	
+					<input class="mdl-textfield__input" type="password" name="inp2" id="reg-pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+					<label class="mdl-textfield__label" for="reg-pass">Password</label>
+					<div class="mdl-textfield__error">use Uppercase,lowercase,numbers with at least 8 characters</div>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label input-cpass">	
+					<input class="mdl-textfield__input" type="password" name="inp2" id="cpass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+					<label class="mdl-textfield__label" for="cpass">Confirm Password</label>
+					<div class="mdl-textfield__error">use Uppercase,lowercase,numbers with at least 8 characters</div>
+				</div>
+			</div>
+			<div class="login-container">
+				<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored back">
+					<i class="material-icons">arrow_back</i>
+				</button>
+				<button  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored register" id="registerbtn" type="button">Register</button>
+			</div>
+			<div class="signup-text-login">
+				Have an account ! 
+				<a>Login</a>  here.
+			</div>
+			<div class="tos-disclaimer">
+				By logging in, you agree to Pumpkin's 
+				<a href="appname.com/conditions">Terms of Service</a>, 
+				<a href="appname.com/cookiepolicy">Cookie Policy</a>, 
+				<a href="appname.com/privacy">Privacy Policy</a> and 
+				<a href="appname.com/policies">Content Policies</a>.        
+			</div>
+		</form>
+	</div>
+	<!-- Register ends-->
+	<script type="text/javascript" src="/js/login.js"></script>
+	<script type="text/javascript" src="/js/index.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAo7dPTwSuqC6O1yJyEYHSJ1KO4lh2NkNE&libraries=places&callback=locateMe" async defer></script>
+	<script type="text/javascript" async>
+		var elem = document.getElementById("slide-container");
+		var flickity = new Flickity (elem, {cellAlign: 'left', contain: true,wrapAround: true, watchCSS: true});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
