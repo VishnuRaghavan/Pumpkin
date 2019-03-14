@@ -83,13 +83,23 @@ $(document).ready(function(){
 });
 
 
+// var config = {
+//     apiKey: "AIzaSyDVw6ARAqk5aOJqNaoMyabEaH2acCK8AXs",
+//     authDomain: "can-store-eb698.firebaseapp.com",
+//     databaseURL: "https://can-store-eb698.firebaseio.com",
+//     projectId: "can-store-eb698",
+//     storageBucket: "can-store-eb698.appspot.com",
+//     messagingSenderId: "542084759539"
+//   };
+// firebase.initializeApp(config);
+
 var config = {
-    apiKey: "AIzaSyDVw6ARAqk5aOJqNaoMyabEaH2acCK8AXs",
-    authDomain: "can-store-eb698.firebaseapp.com",
-    databaseURL: "https://can-store-eb698.firebaseio.com",
-    projectId: "can-store-eb698",
-    storageBucket: "can-store-eb698.appspot.com",
-    messagingSenderId: "542084759539"
+    apiKey: "AIzaSyCfnDPZQ47leOGIxqQNwo5W3s9OG7TsEoY",
+    authDomain: "can-store-new.firebaseapp.com",
+    databaseURL: "https://can-store-new.firebaseio.com",
+    projectId: "can-store-new",
+    storageBucket: "",
+    messagingSenderId: "167001891254"
   };
 firebase.initializeApp(config);
   
