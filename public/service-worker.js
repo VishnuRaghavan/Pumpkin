@@ -47,10 +47,10 @@ var cacheFiles = [
 
 
 self.addEventListener('install', e => {
-	console.log('SERVICE WORKER INSTALLED');
+	// console.log('SERVICE WORKER INSTALLED');
 	e.waitUntil(
 		caches.open(cacheName).then(cache=>{
-		console.log('SERVICE WORKER CACHING THE CACHE FILES');
+		// console.log('SERVICE WORKER CACHING THE CACHE FILES');
 		return cache.addAll(cacheFiles);
 	}));
 });
@@ -58,14 +58,14 @@ self.addEventListener('install', e => {
 
 
 self.addEventListener('activate', e => {
-	console.log('SERVICE WORKER ACTIVATED');
+	// console.log('SERVICE WORKER ACTIVATED');
 	e.waitUntil(
 
 		caches.keys().then(cacheNames=>{
 			return Promise.all(cacheNames.map(thisCacheName=>{
 
 				if(thisCacheName !== cacheName){
-					console.log("SERVICE WORKER IS REMOVING CACHE FIELS ", thisCacheName);
+					// console.log("SERVICE WORKER IS REMOVING CACHE FIELS ", thisCacheName);
 					return caches.delete(thisCacheName);
 				}
 			}));
@@ -76,35 +76,62 @@ self.addEventListener('activate', e => {
 
 
 self.addEventListener('fetch', e => {
-	console.log('SERVICE WORKER FETCHING', e.request.url);
-	e.respondWith(
-		caches.match(e.request).then(response=>{
-			if(response){
-				console.log('SERVICE WORKER FOUND FILES IN CACHE ', e.request.url);
-				return response;
-			}
-			var requestClone = e.request.clone();
-			fetch(requestClone).then(response=>{
-				if(!response){
-					console.log('THE SERVICE WORKER GOT NO RESPONSE FROM FETCH');
-					return response;
-				}
-				var responseClone = response.clone();
-				caches.open(cacheName).then(cache=>{
-					cache.put(e.request, responseClone);
-					return response;
-				});
-
-			}).catch(error=>{
-				console.log('SERVICE WORKER CANNOT FETCH & CACHE FROM SERVER');
-			});
-		})
+	// console.log('SERVICE WORKER FETCHING', e.request.url);
+	e.respondWith(async function(){
+		const cachedResponse = await caches.match(e.request);
+		if(cachedResponse){ 
+			// console.log('SERVICE WORKER FOUND FILES IN CACHE ', e.request.url);
+			return cachedResponse;
+		}else{
+			console.log("no cached Response");
+		}
+		var requestClone = e.request.clone();
+		var fetchResponse = await fetch(requestClone);
+		if(fetchResponse) {
+			// console.log('THE SERVICE WORKER GOT NO RESPONSE FROM FETCH');
+			return fetchResponse;
+		}else{
+			// console.log('SERVICE WORKER CANNOT FETCH & CACHE FROM SERVER');
+			console.log("found fetch Response");
+		}
+		var responseClone = response.clone();
+		const openedCache = await caches.open(cacheName);
+		if(!e.request.url.match(/^(?!\/__).*/)){
+			openedCache.put(e.request, responseClone);
+			return response;
+		}
+	}()
 	);
 });
 
-
-
-
+self.addEventListener('fetch', e => {
+	// console.log('SERVICE WORKER FETCHING', e.request.url);
+	e.respondWith(async () => {
+		const cachedResponse = await caches.match(e.request);
+		if(cachedResponse){ 
+			// console.log('SERVICE WORKER FOUND FILES IN CACHE ', e.request.url);
+			return cachedResponse;
+		}else{
+			// console.log("no cached Response");
+		}
+		var requestClone = e.request.clone();
+		var fetchResponse = await fetch(requestClone);
+		if(fetchResponse) {
+			// console.log('THE SERVICE WORKER GOT NO RESPONSE FROM FETCH');
+			return fetchResponse;
+		}else{
+			// console.log('SERVICE WORKER CANNOT FETCH & CACHE FROM SERVER');
+			// console.log("found fetch Response");
+		}
+		var responseClone = response.clone();
+		const openedCache = await caches.open(cacheName);
+		if(!e.request.url.match(/^(?!\/__).*/)){
+			openedCache.put(e.request, responseClone);
+			return response;
+		}
+	}
+	);
+});
 
 
 

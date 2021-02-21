@@ -93,15 +93,16 @@ $(document).ready(function(){
 //   };
 // firebase.initializeApp(config);
 
-var config = {
+  // Initialize Firebase
+  var config = {
     apiKey: "AIzaSyCfnDPZQ47leOGIxqQNwo5W3s9OG7TsEoY",
     authDomain: "can-store-new.firebaseapp.com",
     databaseURL: "https://can-store-new.firebaseio.com",
     projectId: "can-store-new",
-    storageBucket: "",
+    storageBucket: "can-store-new.appspot.com",
     messagingSenderId: "167001891254"
   };
-firebase.initializeApp(config);
+  firebase.initializeApp(config);
   
 var google = document.getElementById('Gl-id');
 var facebook = document.getElementById('fb-id');
@@ -196,7 +197,7 @@ var start = () => {
 			// 	});
 			// });
 		}else{
-			console.error(err);
+			console.error(errorMessage);
 		}
 	});
 
